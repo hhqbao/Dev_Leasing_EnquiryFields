@@ -32,4 +32,8 @@ GO
 ALTER TABLE [dbo].[Employers]  WITH CHECK ADD  CONSTRAINT [FK_Employer_EmployerType] FOREIGN KEY([EmployerTypeId])
 REFERENCES [dbo].[LP_EmployerTypes] ([Id])
 
+/****** Create new fields for table LP_Customer ******/
+ALTER TABLE LP_Customer ADD HasHECSDebt bit
+ALTER TABLE LP_Customer ADD IsClaimingTax bit
+
 Rollback transaction
