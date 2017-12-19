@@ -41,7 +41,7 @@ ALTER PROCEDURE [dbo].[sp_lp_InsertQuoteCustomer]
 	@siteID int,
 	@payrollGroup int,
 	@erID int,
-	@hasHECSDept bit,
+	@hasHECSDebt bit,
 	@isClaimingTax bit,
 	@ID int output 
 AS
@@ -119,7 +119,7 @@ AS
 		@siteID,
 		@payrollGroup,
 		@erID,
-		@hasHECSDept,
+		@hasHECSDebt,
 		@isClaimingTax)
 	set @ID = scope_identity()
 GO
