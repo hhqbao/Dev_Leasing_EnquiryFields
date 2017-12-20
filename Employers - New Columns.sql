@@ -36,5 +36,6 @@ REFERENCES [dbo].[LP_EmployerTypes] ([Id])
 ALTER TABLE LP_Customer ADD HasHECSDebt bit
 ALTER TABLE LP_Customer ADD IsClaimingTax bit
 ALTER TABLE LP_Customer ADD IsStaffSpecialist bit
+ALTER TABLE LP_Customer ADD IsMinisterReligion bit
 
 Rollback transaction
