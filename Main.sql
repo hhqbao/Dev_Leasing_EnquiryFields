@@ -151,7 +151,8 @@ BEGIN
             longitude,
             latitude,
             er.brokerid,
-			er.agentid			
+			er.agentid,
+			er.EmployerTypeId			
 	from View_LP_Employer er
 	left outer join employersext ext on ext.erid = er.erid
 	where (isnull(ext.Active,0) = 1 OR @showInactive = 0)
