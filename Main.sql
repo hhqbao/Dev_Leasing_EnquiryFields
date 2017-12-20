@@ -40,6 +40,7 @@ ALTER TABLE LP_Customer ADD HasHECSDebt bit
 ALTER TABLE LP_Customer ADD IsClaimingTax bit
 ALTER TABLE LP_Customer ADD IsStaffSpecialist bit
 ALTER TABLE LP_Customer ADD IsMinisterReligion bit
+ALTER TABLE LP_Customer ADD RealBaseSalary decimal(18,2)
 /****** ****************************************************************************** ******/
 
 /****** Object:  StoredProcedure [dbo].[sp_lp_GetEmployerById]    Script Date: 12/12/2017 1:32:29 PM ******/
