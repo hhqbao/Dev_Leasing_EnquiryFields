@@ -43,6 +43,7 @@ ALTER PROCEDURE [dbo].[sp_lp_InsertQuoteCustomer]
 	@erID int,
 	@hasHECSDebt bit,
 	@isClaimingTax bit,
+	@isStaffSpecialist bit = NULL,
 	@ID int output 
 AS
 	Declare @searchKey nvarchar(500)
@@ -84,7 +85,8 @@ AS
 		[PayrollGroup],
 		[ErID],
 		[HasHECSDebt],
-		[IsClaimingTax])
+		[IsClaimingTax],
+		[IsStaffSpecialist])
 	Values (
 		@title,
 		@firstName,
@@ -120,7 +122,8 @@ AS
 		@payrollGroup,
 		@erID,
 		@hasHECSDebt,
-		@isClaimingTax)
+		@isClaimingTax,
+		@isStaffSpecialist)
 	set @ID = scope_identity()
 GO
 
