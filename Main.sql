@@ -151,8 +151,7 @@ BEGIN
             longitude,
             latitude,
             er.brokerid,
-			er.agentid,
-			er.EmployerTypeName
+			er.agentid			
 	from View_LP_Employer er
 	left outer join employersext ext on ext.erid = er.erid
 	where (isnull(ext.Active,0) = 1 OR @showInactive = 0)
@@ -214,11 +213,9 @@ SELECT  er.ErId,
 						FOR XML PATH('')
 					)
 				,1,2,'')
-			,'') as [SecondaryAccountManagers],
-		ISNULL(et.Name, '') as EmployerTypeName
+			,'') as [SecondaryAccountManagers]		
 FROM    dbo.Employers er
 inner join EmployersExt erext on erext.erid = er.erid
-left join LP_EmployerTypes et on er.EmployerTypeId = et.Id
 GO
 /****** ****************************************************************************** ******/
 
