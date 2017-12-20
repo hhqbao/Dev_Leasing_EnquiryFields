@@ -35,5 +35,6 @@ REFERENCES [dbo].[LP_EmployerTypes] ([Id])
 /****** Create new fields for table LP_Customer ******/
 ALTER TABLE LP_Customer ADD HasHECSDebt bit
 ALTER TABLE LP_Customer ADD IsClaimingTax bit
+ALTER TABLE LP_Customer ADD IsStaffSpecialist bit
 
 Rollback transaction
