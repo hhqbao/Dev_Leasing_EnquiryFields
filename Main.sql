@@ -156,6 +156,13 @@ BEGIN
             er.brokerid,
 			er.agentid,
 			er.EmployerTypeId,
+			ISNULL(er.MaximumLeases, -1) as MaximumLeases,
+			Cast(ISNULL(er.IsGstDeducted, 0) as bit) as IsGstDeducted,
+			Cast(ISNULL(er.IsGstEquivalent, 0) as bit) as IsGstEquivalent,
+			Cast(ISNULL(er.IsItcRefunded, 0) as bit) as IsItcRefunded,
+			Cast(ISNULL(er.AllowLuxuryVehicle, 0) as bit) as AllowLuxuryVehicle,
+			Cast(ISNULL(er.LuxuryVehicleCharged, 0) as bit) as LuxuryVehicleCharged,
+			Cast(ISNULL(er.AllowOperationCost, 0) as bit) as AllowOperationCost,	
 			Cast(IsNull(er.AllowExtraFields, 0) as bit) [AllowExtraFields]			
 	from View_LP_Employer er
 	left outer join employersext ext on ext.erid = er.erid
