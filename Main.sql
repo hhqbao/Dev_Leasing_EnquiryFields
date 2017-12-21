@@ -270,7 +270,8 @@ AS
 		Cast(IsNUll(HasHECSDebt, 0) as bit) [HasHECSDebt],
 		Cast(IsNUll(IsClaimingTax, 0) as bit) [IsClaimingTax],
 		[IsStaffSpecialist],
-		[IsMinisterReligion]
+		[IsMinisterReligion],
+		[RealBaseSalary]
 	From LP_Customer
 	Where [ID] = @ID
 /****** ****************************************************************************** ******/
@@ -319,6 +320,7 @@ ALTER PROCEDURE [dbo].[sp_lp_InsertQuoteCustomer]
 	@isClaimingTax bit,
 	@isStaffSpecialist bit = NULL,
 	@isMinisterReligion bit = NULL,
+	@realBaseSalary decimal(18,2) = NULL,
 	@ID int output 
 AS
 	Declare @searchKey nvarchar(500)
@@ -362,7 +364,8 @@ AS
 		[HasHECSDebt],
 		[IsClaimingTax],
 		[IsStaffSpecialist],
-		[IsMinisterReligion])
+		[IsMinisterReligion],
+		[RealBaseSalary])
 	Values (
 		@title,
 		@firstName,
@@ -400,7 +403,8 @@ AS
 		@hasHECSDebt,
 		@isClaimingTax,
 		@isStaffSpecialist,
-		@isMinisterReligion)
+		@isMinisterReligion,
+		@realBaseSalary)
 	set @ID = scope_identity()
 GO
 /****** ****************************************************************************** ******/
@@ -564,7 +568,8 @@ ALTER PROCEDURE [dbo].[sp_lp_UpdateQuoteCustomer]
 	@hasHECSDebt bit,
 	@isClaimingTax bit,
 	@isStaffSpecialist bit = NULL,
-	@isMinisterReligion bit = NULL
+	@isMinisterReligion bit = NULL,
+	@realBaseSalary decimal(18,2) = NULL
 AS
 	Update LP_Customer
 	Set
@@ -604,7 +609,8 @@ AS
 		[HasHECSDebt] = @hasHECSDebt,
 		[IsClaimingTax] = @isClaimingTax,
 		[IsStaffSpecialist] = @isStaffSpecialist,
-		[IsMinisterReligion] = @isMinisterReligion
+		[IsMinisterReligion] = @isMinisterReligion,
+		[RealBaseSalary] = @realBaseSalary
 	Where
 	ID = @iD
 /****** ****************************************************************************** ******/
