@@ -7,6 +7,7 @@ ALTER TABLE Employers ADD IsItcRefunded bit
 ALTER TABLE Employers ADD AllowLuxuryVehicle bit
 ALTER TABLE Employers ADD LuxuryVehicleCharged bit
 ALTER TABLE Employers ADD AllowOperationCost bit
+ALTER TABLE Employers ADD AllowExtraFields bit
 /****** ****************************************************************************** ******/
 
 /****** Object:  Table [dbo].[EmployerFrequency]    Script Date: 21/12/2017 8:50:58 AM ******/
@@ -93,6 +94,7 @@ BEGIN
 			Cast(ISNULL(er.AllowLuxuryVehicle, 0) as bit) as AllowLuxuryVehicle,
 			Cast(ISNULL(er.LuxuryVehicleCharged, 0) as bit) as LuxuryVehicleCharged,
 			Cast(ISNULL(er.AllowOperationCost, 0) as bit) as AllowOperationCost,			
+			Cast(ISNULL(er.AllowExtraFields, 0) as bit) as AllowExtraFields,
 			longitude,
 			latitude,
 			er.brokerid,
@@ -153,7 +155,8 @@ BEGIN
             latitude,
             er.brokerid,
 			er.agentid,
-			er.EmployerTypeId			
+			er.EmployerTypeId,
+			Cast(IsNull(er.AllowExtraFields, 0) as bit) [AllowExtraFields]			
 	from View_LP_Employer er
 	left outer join employersext ext on ext.erid = er.erid
 	where (isnull(ext.Active,0) = 1 OR @showInactive = 0)
@@ -197,6 +200,7 @@ SELECT  er.ErId,
 		er.AllowLuxuryVehicle,
 		er.LuxuryVehicleCharged,
 		er.AllowOperationCost,
+		er.AllowExtraFields,
 		erext.PartnerID,
 		erext.brokerid,
 		erext.agentid,
@@ -456,7 +460,8 @@ ALTER PROCEDURE [dbo].[sp_LP_UpdateEmployer]
 	@IsItcRefunded bit = 0,
 	@AllowLuxuryVehicle bit = 0,
 	@LuxuryVehicleCharged bit = 0,
-	@AllowOperationCost bit = 0
+	@AllowOperationCost bit = 0,
+	@AllowExtraFields bit = 0
 AS
 
 BEGIN
@@ -483,7 +488,8 @@ BEGIN
 			IsItcRefunded = @IsItcRefunded,
 			AllowLuxuryVehicle = @AllowLuxuryVehicle,
 			LuxuryVehicleCharged = @LuxuryVehicleCharged,
-			AllowOperationCost = @AllowOperationCost
+			AllowOperationCost = @AllowOperationCost,
+			AllowExtraFields = @AllowExtraFields
 		where erid = @erid
 		
 		UPDATE EmployersExt
