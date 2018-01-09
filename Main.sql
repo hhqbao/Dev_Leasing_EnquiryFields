@@ -42,6 +42,17 @@ ALTER TABLE LP_Customer ADD IsClaimingTax bit
 ALTER TABLE LP_Customer ADD IsStaffSpecialist bit
 ALTER TABLE LP_Customer ADD IsMinisterReligion bit
 ALTER TABLE LP_Customer ADD RealBaseSalary decimal(18,2)
+
+ALTER TABLE LP_Customer ADD GenCapIncGst decimal(18,2)
+ALTER TABLE LP_Customer ADD GenCapExcGst decimal(18,2)
+ALTER TABLE LP_Customer ADD MealEntertainment decimal(18,2)
+ALTER TABLE LP_Customer ADD Superannuation decimal(18,2)
+ALTER TABLE LP_Customer ADD OtherExempt decimal(18,2)
+ALTER TABLE LP_Customer ADD RemoteAreaRent decimal(18,2)
+ALTER TABLE LP_Customer ADD RemoteAreaMortgage decimal(18,2)
+ALTER TABLE LP_Customer ADD RemoteAreaFuel decimal(18,2)
+ALTER TABLE LP_Customer ADD OtherPreTaxItem decimal(18,2)
+ALTER TABLE LP_Customer ADD OtherPosTaxItem decimal(18,2)
 /****** ****************************************************************************** ******/
 
 /****** Object:  StoredProcedure [dbo].[sp_lp_GetEmployerById]    Script Date: 12/12/2017 1:32:29 PM ******/
