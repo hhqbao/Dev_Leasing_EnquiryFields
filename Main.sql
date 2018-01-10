@@ -43,6 +43,7 @@ ALTER TABLE LP_Customer ADD IsStaffSpecialist bit
 ALTER TABLE LP_Customer ADD IsMinisterReligion bit
 ALTER TABLE LP_Customer ADD RealBaseSalary decimal(18,2)
 
+/** NOT READY TO PUBLISH YET **/
 ALTER TABLE LP_Customer ADD GenCapIncGst decimal(18,2)
 ALTER TABLE LP_Customer ADD GenCapExcGst decimal(18,2)
 ALTER TABLE LP_Customer ADD MealEntertainment decimal(18,2)
@@ -348,8 +349,8 @@ ALTER PROCEDURE [dbo].[sp_lp_InsertQuoteCustomer]
 	@siteID int,
 	@payrollGroup int,
 	@erID int,
-	@hasHECSDebt bit,
-	@isClaimingTax bit,
+	@hasHECSDebt bit = NULL,
+	@isClaimingTax bit = NULL,
 	@isStaffSpecialist bit = NULL,
 	@isMinisterReligion bit = NULL,
 	@realBaseSalary decimal(18,2) = NULL,
@@ -599,8 +600,8 @@ ALTER PROCEDURE [dbo].[sp_lp_UpdateQuoteCustomer]
 	@siteID int,
 	@payrollGroup int,
 	@erID int,
-	@hasHECSDebt bit,
-	@isClaimingTax bit,
+	@hasHECSDebt bit = NULL,
+	@isClaimingTax bit = NULL,
 	@isStaffSpecialist bit = NULL,
 	@isMinisterReligion bit = NULL,
 	@realBaseSalary decimal(18,2) = NULL
