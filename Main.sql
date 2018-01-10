@@ -433,7 +433,17 @@ AS
 		[RemoteAreaMortgage],
 		[RemoteAreaFuel],
 		[OtherPreTaxItem],
-		[OtherPosTaxItem]
+		[OtherPosTaxItem],
+		[GenCapIncGstDesc],
+		[GenCapExcGstDesc],
+		[MealEntertainmentDesc],
+		[SuperannuationDesc],
+		[OtherExemptDesc],
+		[RemoteAreaRentDesc],
+		[RemoteAreaMortgageDesc],
+		[RemoteAreaFuelDesc],
+		[OtherPreTaxItemDesc],
+		[OtherPosTaxItemDesc]
 	From LP_Customer
 	Where [ID] = @ID
 /****** ****************************************************************************** ******/
@@ -493,6 +503,16 @@ ALTER PROCEDURE [dbo].[sp_lp_InsertQuoteCustomer]
 	@remoteAreaFuel decimal(18,2) = NULL,
 	@otherPreTaxItem decimal(18,2) = NULL,
 	@otherPosTaxItem decimal(18,2) = NULL,
+	@genCapIncGstDesc varchar(255) = NULL,
+	@genCapExcGstDesc varchar(255) = NULL,
+	@mealEntertainmentDesc varchar(255) = NULL,
+	@superannuationDesc varchar(255) = NULL,	
+	@otherExemptDesc varchar(255) = NULL,
+	@remoteAreaRentDesc varchar(255) = NULL,
+	@remoteAreaMortgageDesc varchar(255) = NULL,
+	@remoteAreaFuelDesc varchar(255) = NULL,
+	@otherPreTaxItemDesc varchar(255) = NULL,
+	@otherPosTaxItemDesc varchar(255) = NULL,
 	@ID int output 
 AS
 	Declare @searchKey nvarchar(500)
@@ -547,7 +567,17 @@ AS
 		[RemoteAreaMortgage],
 		[RemoteAreaFuel],
 		[OtherPreTaxItem],
-		[OtherPosTaxItem])
+		[OtherPosTaxItem],
+		[GenCapIncGstDesc],
+		[GenCapExcGstDesc],
+		[MealEntertainmentDesc],
+		[SuperannuationDesc],
+		[OtherExemptDesc],
+		[RemoteAreaRentDesc],
+		[RemoteAreaMortgageDesc],
+		[RemoteAreaFuelDesc],
+		[OtherPreTaxItemDesc],
+		[OtherPosTaxItemDesc])
 	Values (
 		@title,
 		@firstName,
@@ -596,7 +626,17 @@ AS
 		@remoteAreaMortgage,
 		@remoteAreaFuel,
 		@otherPreTaxItem,
-		@otherPosTaxItem)
+		@otherPosTaxItem,
+		@genCapIncGstDesc,
+		@genCapExcGstDesc,
+		@mealEntertainmentDesc,
+		@superannuationDesc,	
+		@otherExemptDesc,
+		@remoteAreaRentDesc,
+		@remoteAreaMortgageDesc,
+		@remoteAreaFuelDesc,
+		@otherPreTaxItemDesc,
+		@otherPosTaxItemDesc)
 	set @ID = scope_identity()
 GO
 /****** ****************************************************************************** ******/
@@ -655,7 +695,17 @@ ALTER PROCEDURE [dbo].[sp_lp_UpdateQuoteCustomer]
 	@remoteAreaMortgage decimal(18,2) = NULL,
 	@remoteAreaFuel decimal(18,2) = NULL,
 	@otherPreTaxItem decimal(18,2) = NULL,
-	@otherPosTaxItem decimal(18,2) = NULL
+	@otherPosTaxItem decimal(18,2) = NULL,
+	@genCapIncGstDesc varchar(255) = NULL,
+	@genCapExcGstDesc varchar(255) = NULL,
+	@mealEntertainmentDesc varchar(255) = NULL,
+	@superannuationDesc varchar(255) = NULL,	
+	@otherExemptDesc varchar(255) = NULL,
+	@remoteAreaRentDesc varchar(255) = NULL,
+	@remoteAreaMortgageDesc varchar(255) = NULL,
+	@remoteAreaFuelDesc varchar(255) = NULL,
+	@otherPreTaxItemDesc varchar(255) = NULL,
+	@otherPosTaxItemDesc varchar(255) = NULL
 AS
 	Update LP_Customer
 	Set
@@ -706,7 +756,17 @@ AS
 		[RemoteAreaMortgage] = @remoteAreaMortgage,
 		[RemoteAreaFuel] = @remoteAreaFuel,
 		[OtherPreTaxItem] = @otherPreTaxItem,
-		[OtherPosTaxItem] = @otherPosTaxItem
+		[OtherPosTaxItem] = @otherPosTaxItem,
+		[GenCapIncGstDesc] = @genCapIncGstDesc,
+		[GenCapExcGstDesc] = @genCapExcGstDesc,
+		[MealEntertainmentDesc] = @mealEntertainmentDesc,
+		[SuperannuationDesc] = @superannuationDesc,
+		[OtherExemptDesc] = @otherExemptDesc,
+		[RemoteAreaRentDesc] = @remoteAreaRentDesc,
+		[RemoteAreaMortgageDesc] = @remoteAreaMortgageDesc,
+		[RemoteAreaFuelDesc] = @remoteAreaFuelDesc,
+		[OtherPreTaxItemDesc] = @otherPreTaxItemDesc,
+		[OtherPosTaxItemDesc] = @otherPosTaxItemDesc
 	Where
 	ID = @iD
 /****** ****************************************************************************** ******/
