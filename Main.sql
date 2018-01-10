@@ -353,7 +353,17 @@ ALTER PROCEDURE [dbo].[sp_lp_InsertQuoteCustomer]
 	@isClaimingTax bit = NULL,
 	@isStaffSpecialist bit = NULL,
 	@isMinisterReligion bit = NULL,
-	@realBaseSalary decimal(18,2) = NULL,
+	@realBaseSalary decimal(18,2) = NULL,	
+	@genCapIncGst decimal(18,2) = NULL,
+	@genCapExcGst decimal(18,2) = NULL,
+	@mealEntertainment decimal(18,2) = NULL,
+	@superannuation decimal(18,2) = NULL,	
+	@otherExempt decimal(18,2) = NULL,
+	@remoteAreaRent decimal(18,2) = NULL,
+	@remoteAreaMortgage decimal(18,2) = NULL,
+	@remoteAreaFuel decimal(18,2) = NULL,
+	@otherPreTaxItem decimal(18,2) = NULL,
+	@otherPosTaxItem decimal(18,2) = NULL,
 	@ID int output 
 AS
 	Declare @searchKey nvarchar(500)
@@ -398,7 +408,17 @@ AS
 		[IsClaimingTax],
 		[IsStaffSpecialist],
 		[IsMinisterReligion],
-		[RealBaseSalary])
+		[RealBaseSalary],
+		[GenCapIncGst],
+		[GenCapExcGst],
+		[MealEntertainment],
+		[Superannuation],
+		[OtherExempt],
+		[RemoteAreaRent],
+		[RemoteAreaMortgage],
+		[RemoteAreaFuel],
+		[OtherPreTaxItem],
+		[OtherPosTaxItem])
 	Values (
 		@title,
 		@firstName,
@@ -437,7 +457,17 @@ AS
 		@isClaimingTax,
 		@isStaffSpecialist,
 		@isMinisterReligion,
-		@realBaseSalary)
+		@realBaseSalary,
+		@genCapIncGst,
+		@genCapExcGst,
+		@mealEntertainment,
+		@superannuation,	
+		@otherExempt,
+		@remoteAreaRent,
+		@remoteAreaMortgage,
+		@remoteAreaFuel,
+		@otherPreTaxItem,
+		@otherPosTaxItem)
 	set @ID = scope_identity()
 GO
 /****** ****************************************************************************** ******/
@@ -604,7 +634,17 @@ ALTER PROCEDURE [dbo].[sp_lp_UpdateQuoteCustomer]
 	@isClaimingTax bit = NULL,
 	@isStaffSpecialist bit = NULL,
 	@isMinisterReligion bit = NULL,
-	@realBaseSalary decimal(18,2) = NULL
+	@realBaseSalary decimal(18,2) = NULL,
+	@genCapIncGst decimal(18,2) = NULL,
+	@genCapExcGst decimal(18,2) = NULL,
+	@mealEntertainment decimal(18,2) = NULL,
+	@superannuation decimal(18,2) = NULL,	
+	@otherExempt decimal(18,2) = NULL,
+	@remoteAreaRent decimal(18,2) = NULL,
+	@remoteAreaMortgage decimal(18,2) = NULL,
+	@remoteAreaFuel decimal(18,2) = NULL,
+	@otherPreTaxItem decimal(18,2) = NULL,
+	@otherPosTaxItem decimal(18,2) = NULL
 AS
 	Update LP_Customer
 	Set
@@ -645,7 +685,17 @@ AS
 		[IsClaimingTax] = @isClaimingTax,
 		[IsStaffSpecialist] = @isStaffSpecialist,
 		[IsMinisterReligion] = @isMinisterReligion,
-		[RealBaseSalary] = @realBaseSalary
+		[RealBaseSalary] = @realBaseSalary,
+		[GenCapIncGst] = @genCapIncGst,
+		[GenCapExcGst] = @genCapExcGst,
+		[MealEntertainment] = @mealEntertainment,
+		[Superannuation] = @superannuation,
+		[OtherExempt] = @otherExempt,
+		[RemoteAreaRent] = @remoteAreaRent,
+		[RemoteAreaMortgage] = @remoteAreaMortgage,
+		[RemoteAreaFuel] = @remoteAreaFuel,
+		[OtherPreTaxItem] = @otherPreTaxItem,
+		[OtherPosTaxItem] = @otherPosTaxItem
 	Where
 	ID = @iD
 /****** ****************************************************************************** ******/
