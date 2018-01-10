@@ -293,7 +293,17 @@ AS
 		Cast(IsNUll(IsClaimingTax, 0) as bit) [IsClaimingTax],
 		[IsStaffSpecialist],
 		[IsMinisterReligion],
-		[RealBaseSalary]
+		[RealBaseSalary],
+		[GenCapIncGst],
+		[GenCapExcGst],
+		[MealEntertainment],
+		[Superannuation],
+		[OtherExempt],
+		[RemoteAreaRent],
+		[RemoteAreaMortgage],
+		[RemoteAreaFuel],
+		[OtherPreTaxItem],
+		[OtherPosTaxItem]
 	From LP_Customer
 	Where [ID] = @ID
 /****** ****************************************************************************** ******/
