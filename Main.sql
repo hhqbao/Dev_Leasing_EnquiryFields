@@ -770,3 +770,21 @@ AS
 	Where
 	ID = @iD
 /****** ****************************************************************************** ******/
+
+/****** Object:  Table [dbo].[LP_EmployerAllowedPlanTypes]    Script Date: 15/01/2018 11:22:52 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[LP_EmployerAllowedPlanTypes](
+	[ErId] [int] NOT NULL,
+	[PlanTypeId] [int] NOT NULL,
+ CONSTRAINT [PK_LP_EmployerAllowedPlanTypes] PRIMARY KEY CLUSTERED 
+(
+	[ErId] ASC,
+	[PlanTypeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
