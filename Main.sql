@@ -8,6 +8,8 @@ ALTER TABLE Employers ADD AllowLuxuryVehicle bit
 ALTER TABLE Employers ADD LuxuryVehicleCharged bit
 ALTER TABLE Employers ADD AllowOperationCost bit
 ALTER TABLE Employers ADD AllowExtraFields bit
+
+ALTER TABLE Employers DROP COLUMN AllowExtraFields
 /****** ****************************************************************************** ******/
 
 /****** Object:  Table [dbo].[EmployerFrequency]    Script Date: 21/12/2017 8:50:58 AM ******/
@@ -85,8 +87,7 @@ BEGIN
 			Cast(ISNULL(er.IsItcRefunded, 0) as bit) as IsItcRefunded,
 			Cast(ISNULL(er.AllowLuxuryVehicle, 0) as bit) as AllowLuxuryVehicle,
 			Cast(ISNULL(er.LuxuryVehicleCharged, 0) as bit) as LuxuryVehicleCharged,
-			Cast(ISNULL(er.AllowOperationCost, 0) as bit) as AllowOperationCost,			
-			Cast(ISNULL(er.AllowExtraFields, 0) as bit) as AllowExtraFields,
+			Cast(ISNULL(er.AllowOperationCost, 0) as bit) as AllowOperationCost,						
 			longitude,
 			latitude,
 			er.brokerid,
@@ -154,8 +155,7 @@ BEGIN
 			Cast(ISNULL(er.IsItcRefunded, 0) as bit) as IsItcRefunded,
 			Cast(ISNULL(er.AllowLuxuryVehicle, 0) as bit) as AllowLuxuryVehicle,
 			Cast(ISNULL(er.LuxuryVehicleCharged, 0) as bit) as LuxuryVehicleCharged,
-			Cast(ISNULL(er.AllowOperationCost, 0) as bit) as AllowOperationCost,	
-			Cast(IsNull(er.AllowExtraFields, 0) as bit) [AllowExtraFields]			
+			Cast(ISNULL(er.AllowOperationCost, 0) as bit) as AllowOperationCost					
 	from View_LP_Employer er
 	left outer join employersext ext on ext.erid = er.erid
 	where (isnull(ext.Active,0) = 1 OR @showInactive = 0)
@@ -198,8 +198,7 @@ SELECT  er.ErId,
 		er.IsItcRefunded,
 		er.AllowLuxuryVehicle,
 		er.LuxuryVehicleCharged,
-		er.AllowOperationCost,
-		er.AllowExtraFields,
+		er.AllowOperationCost,		
 		erext.PartnerID,
 		erext.brokerid,
 		erext.agentid,
@@ -271,8 +270,7 @@ ALTER PROCEDURE [dbo].[sp_LP_UpdateEmployer]
 	@IsItcRefunded bit = 0,
 	@AllowLuxuryVehicle bit = 0,
 	@LuxuryVehicleCharged bit = 0,
-	@AllowOperationCost bit = 0,
-	@AllowExtraFields bit = 0
+	@AllowOperationCost bit = 0	
 AS
 
 BEGIN
@@ -299,8 +297,7 @@ BEGIN
 			IsItcRefunded = @IsItcRefunded,
 			AllowLuxuryVehicle = @AllowLuxuryVehicle,
 			LuxuryVehicleCharged = @LuxuryVehicleCharged,
-			AllowOperationCost = @AllowOperationCost,
-			AllowExtraFields = @AllowExtraFields
+			AllowOperationCost = @AllowOperationCost			
 		where erid = @erid
 		
 		UPDATE EmployersExt
